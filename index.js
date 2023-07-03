@@ -1,14 +1,17 @@
-const openIcon = document.querySelectorAll('span')[0];
-const closeIcon = document.querySelectorAll('span')[1];
+const toggleButton = document.querySelector('button');
+const navMenu = document.querySelector('ul');
+const header = document.querySelector('header');
 
-openIcon.addEventListener("click", function() {
-    openIcon.classList.add('hide');
-    document.querySelector('nav').classList.remove('hide');
-    document.querySelector('nav').classList.add('display');
-});
-
-closeIcon.addEventListener("click", function() {
-    openIcon.classList.remove('hide');
-    document.querySelector('nav').classList.remove('display');
-    document.querySelector('nav').classList.add('hide');
-});
+toggleButton.addEventListener('click', () => {
+    if (navMenu.classList.contains('open')){
+        toggleButton.querySelector('img').setAttribute("src", "images/icon-menu.svg");
+        navMenu.classList.remove('open');
+        toggleButton.classList.remove('open');
+        header.classList.remove('open');
+    } else {
+        toggleButton.querySelector('img').setAttribute("src", "images/icon-menu-close.svg");
+        navMenu.classList.add('open');
+        toggleButton.classList.add('open');
+        header.classList.add('open');
+    }
+})

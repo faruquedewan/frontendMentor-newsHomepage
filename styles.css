@@ -1,6 +1,8 @@
 :root {
+    /* Primary */
     --orange: hsl(35, 77%, 62%);
     --red: hsl(5, 85%, 63%);
+    /* Neutral */
     --offWhite: hsl(36, 100%, 99%);
     --grayishBlue: hsl(233, 8%, 79%);
     --darkGrayishBlue: hsl(236, 13%, 42%);
@@ -15,161 +17,204 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
+    font-size: 15px;
+    color: var(--veryDarkBlue);
     background-color: var(--offWhite);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* HEADER */
-
+/* Header */
 header {
-    width: 90%;
-    max-width: 640px;
-    padding: 1.75rem 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 2rem 1rem;
     position: relative;
 }
 
-.logo-icon {
-    width: 50px;
+header img {
+    width: 40px;
 }
 
-.menu-close-icon {
+nav {
+    align-self: center;
+}
+
+header button img {
+    width: 100%;
+}
+
+header button {
     position: absolute;
-    right: 20px;
-    top: 30px;
+    top: 2rem;
+    right: 1rem;
+    background: transparent;
+    border: 0;
+    z-index: 1000;
 }
 
-.navigation {
-    display: none;
+nav ul {
     position: fixed;
+    inset: 0 0 0 30%;
     background-color: var(--offWhite);
-    right: 0;
-    top: 0;
-    width: 70%;
-    height: 100%;
-    z-index: 1;
-}
+    transform: translateX(100%);
+    transition: transform 200ms ease-in-out;
+    z-index: 100;
 
-.navigation ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-decoration: none;
     list-style: none;
     padding: 9rem 1.5rem;
 }
 
-.navigation ul li {
-    padding-bottom: 1.5rem;
+nav ul.open {
+    transform: translateX(0);
 }
 
-.navigation ul a {
+header.open::after {
+    position: fixed;
+    content: '';
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: .5;
+    background-color: black;
+    z-index: 10;
+}
+
+header button.open {
+    position: fixed;
+}
+
+nav ul a {
     text-decoration: none;
     color: var(--veryDarkBlue);
+    font-size: 1rem;
 }
 
-.display {
-    display: block;
+nav ul a:hover {
+    color: var(--red);
+    transition: 75ms ease-in-out;
 }
 
-.hide {
-    display: none;
-}
-
-
-/* MAIN */
-
+/* Main */
 main {
-    width: 90%;
-    max-width: 640px;
+    padding: 0 1rem 5rem;
 }
 
-.menu-icon-checkbox {
-    display: none;
+/* Section Top */
+.section-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* Section Colorful Image */
-
-.section-colorful-image img {
+picture img{
     width: 100%;
 }
 
-.desktop {
-    display: none;
-}
-
-/* Section Bright Future */
-
 h1 {
-    margin: 1rem 0;
-    line-height: 2.75rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
     font-weight: 800;
-    font-size: 2.75rem;
 }
 
-/* Section Button */
+.section-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 
 p {
-    font-size: 15px;
     color: var(--darkGrayishBlue);
     line-height: 1.5rem;
 }
 
-button {
+.section-button button {
+    text-transform: uppercase;
     font-weight: 700;
     letter-spacing: .25rem;
     color: var(--offWhite);
     background-color: var(--red);
     padding: 1rem 2rem;
     border: none; 
-    margin: 1.5rem 0;
+    align-self: start;
+}
+
+.section-button button:hover {
+    cursor: pointer;
+    background-color: var(--veryDarkBlue);
+    transition: 100ms ease-in-out;
 }
 
 /* Section Blue */
-
 .section-blue {
     background-color: var(--veryDarkBlue);
-    margin: 2rem 0;
     color: var(--offWhite);
-    padding: 1rem;
-}
-
-.section-blue p {
-    width: 95%;
-    line-height: 1.75rem;
-    color: var(--grayishBlue);
+    margin-block: 3rem 4rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 h2 {
     color: var(--orange);
-    padding-top: .5rem;
+    font-size: 1.85rem;
 }
 
-h3 {
-    margin-bottom: .75rem;
-    transition: .25s ease-in-out;
+.section-blue p {
+    line-height: 1.75rem;
+    color: var(--grayishBlue);
+}
+
+.section-blue > section {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 h3:hover {
     cursor: pointer;
     color: var(--orange);
-}
-
-.section-blue div {
-    margin: 2rem 0;
+    transition: 50ms ease-in-out;
 }
 
 hr {
     border-style: none;
     border-top: 1px solid var(--darkGrayishBlue);
-} 
-
-/* Section Three */
-
-.section-three {
-    margin: 4rem 0;
 }
- 
+
+/* Section Bottom */
+.section-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-bottom > section {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.section-bottom > section > div {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.section-bottom img {
+    width: 100px;
+}
+
 h4 {
     font-weight: 700;
     font-size: 2rem;
@@ -179,157 +224,85 @@ h4 {
 h5 {
     font-weight: 800;
     font-size: 1.1rem;
-    margin: .75rem 0;
 }
 
-.section-three > * {
-    margin: 2rem 0;
-    display: flex;
-    gap: 1.5rem;
+h5:hover {
+    cursor: pointer;
+    color: var(--red);
+    transition: 50ms ease-in-out;
 }
 
-.flex-div > img {
-    width: 30%;
-}
-
-/* FOOTER */
-
-footer {
-    font-size: 11px;
-    text-align: center;
-}
-footer a {
-    color: hsl(228, 45%, 44%);
-}
-
-@media screen and (min-width: 1170px) {
-    
-    /* HEADER */
+@media screen and (min-width: 1000px) {
+    /* Header */
     header {
-        max-width: 1380px;
         padding: 3rem 1rem;
+        max-width: 1139px;
     }
     
-    .logo-icon {
-        width: 70px;
-    }
-    
-    .menu-open-icon {
-        display: none;
+    header img {
+        width: 65px;
     }
 
-    .menu-close-icon {
+    header button {
         display: none;
     }
     
-    .navigation {
-        all: unset;
-    }
-
-    .navigation ul {
-        all: unset;
-        list-style: none;
-        display: flex;
+    nav ul {
         gap: 2.5rem;
+        flex-direction: row;
+        inset: unset;
+        position: unset;
+        background-color: unset;
+        padding: unset;
+        transform: unset;
     }
-
-    .navigation ul a:hover {
-        color: var(--red);
-    }
-
-    /* MAIN */
-
+    
+    /* Main */
     main {
-        max-width: 1380px;
+        max-width: 1139px;
+        padding: 0 1rem 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4.5rem;
+    }
+
+    /* Section Top */
+    .section-top {
         display: grid;
-        gap: 2rem;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas: 
-            "image image blue"
-            "h1 button blue"
-            "three three three";
+        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Section Colorful Image */
-
-    .section-colorful-image {
-        grid-area: image;
-    }
-
-    .mobile {
-        display: none;
-    }
-
-    .desktop {
-        display: block;
-    }
-
-    /* Section Bright Future */
-
-    .section-bright-future {
-        grid-area: h1;
+    picture {
+        grid-column: span 2;
     }
 
     h1 {
-        margin: 0;
-        line-height: 4rem;
-        font-size: 4rem;
+        font-size: 3.25rem;
+        line-height: 3.25rem;
     }
-
-    /* Section Button */
 
     .section-button {
-        grid-area: button;
-    }
-
-    p {
-        font-size: 14px;
-        line-height: 1.75rem;
-    }
-
-    button {
-        margin: 2rem 0 0;
-        transition: .25s ease-in-out;
-    }
-
-    button:hover {
-        cursor: pointer;
-        background-color: var(--veryDarkBlue);
+        justify-content: space-between;
     }
 
     /* Section Blue */
+    .section-blue {
+        grid-area: 1 / 3 / 3 / 3;
+    }
 
     .section-blue {
-        margin: 0;
-        grid-area: blue;
-        padding: 2rem 2rem 0;
+        margin-block: unset;
     }
 
     h2 {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
-    /* Section Three */
-
-    .section-three {
-        display: flex;
-        gap: 2rem;
-        grid-area: three;
-        margin: 0;
-    } 
-
-    .section-three > * {
-        margin: 2.5rem 0 5rem;
-        flex: 1;
+    /* Section Bottom */
+    .section-bottom {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
     }
-
-    h5 {
-        margin: .75rem 0;
-        transition: .25s ease-in-out;
-    }
-
-    h5:hover {
-        cursor: pointer;
-        color: var(--red);
-    } 
 }
